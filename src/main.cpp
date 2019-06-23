@@ -167,7 +167,7 @@ void usage(const char* exec_name)
     std::cerr << "Usage: " << exec_name << " [options] (webcam | <path_to_video>)\n";
     std::cerr << "Options:\n";
     std::cerr << "  -f <name>\t\tSelect flow algorithm (dis, farneback, deep, dualtvl1, simple)\n";
-    std::cerr << "  -w <path.mp4>\t\tWrite rendered output to mp4 file\n";
+    std::cerr << "  -o <path.mp4>\t\tWrite rendered output to mp4 file\n";
 }
 
 bool ends_with(string const& value, string const& ending)
@@ -182,20 +182,15 @@ bool ends_with(string const& value, string const& ending)
 int main(int argc, char* argv[])
 {
     string flow_name = "dis";
-    int presets_level = 0;
 
     char opt;
-    while ((opt = getopt(argc, argv, "f:b:kt:ovsp:w:")) != -1) {
+    while ((opt = getopt(argc, argv, "f:o:")) != -1) {
         switch (opt) {
         case 'f':
             flow_name = string(optarg);
             break;
 
-        case 'p':
-            presets_level = atoi(optarg);
-            break;
-
-        case 'w':
+        case 'o':
             out_path = string(optarg);
             if (!ends_with(out_path, ".mp4")) {
                 std::cerr << "Output file must be mp4\n";
