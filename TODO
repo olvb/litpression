@@ -1,0 +1,5 @@
+- only one triangulation per frame
+- use triangle's listoftriangles to delete strokes part of triangles too small
+- investigate if better performance can be reached by detecting useless strokes while moving strokes
+- ignore gradiant with low magnitude and interpolate neighboring gradients to provide better stroke orientation
+- smarter depth ordering. randomize new strokes positions, maybe put thick strokes deeper
